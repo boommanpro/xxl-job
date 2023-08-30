@@ -9,7 +9,7 @@ front merge from https://github.com/Tison-wang/xxl-job-front
 
 ###### 2.日志除了原有的以 window.open 方式在另一个浏览器窗口打开查看外，同时支持在当前页直接打开查看
 
-![Image](https://raw.githubusercontent.com/BoomManPro/xxl-job/main/doc/image/1.jpg)
+![Image](https://raw.githubusercontent.com/BoomManPro/xxl-job/master/doc/image/1.jpg)
 
 &nbsp;
 
@@ -19,7 +19,7 @@ front merge from https://github.com/Tison-wang/xxl-job-front
 
 ###### 支持日志背景色黑白切换
 
-![Image](https://raw.githubusercontent.com/Tison-wang/xxl-job-front/master/doc/image/3.jpg)
+![Image](https://raw.githubusercontent.com/BoomManPro/xxl-job/master/doc/image/3.jpg)
 
 ###### 部署方式与原项目 xxl-job-admin 无区别
 
