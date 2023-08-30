@@ -1,5 +1,6 @@
 package com.xxl.job.core.executor.impl;
 
+import com.xxl.job.core.config.XxlJobExecutorConfig;
 import com.xxl.job.core.executor.XxlJobExecutor;
 import com.xxl.job.core.glue.GlueFactory;
 import com.xxl.job.core.handler.annotation.XxlJob;
@@ -26,6 +27,21 @@ import java.util.Map;
 public class XxlJobSpringExecutor extends XxlJobExecutor implements ApplicationContextAware, SmartInitializingSingleton, DisposableBean {
     private static final Logger logger = LoggerFactory.getLogger(XxlJobSpringExecutor.class);
 
+    public XxlJobSpringExecutor() {
+
+    }
+
+    public XxlJobSpringExecutor(XxlJobExecutorConfig xxlJobExecutorConfig) {
+        this.setAdminAddresses(xxlJobExecutorConfig.getAdminAddresses());
+        this.setAccessToken(xxlJobExecutorConfig.getAccessToken());
+        XxlJobExecutorConfig.ExecutorConfig executor = xxlJobExecutorConfig.getExecutor();
+        this.setAppname(executor.getAppName());
+        this.setAddress(executor.getAddress());
+        this.setIp(executor.getIp());
+        this.setPort(executor.getPort());
+        this.setLogPath(executor.getLogPath());
+        this.setLogRetentionDays(executor.getLogRetentionDays());
+    }
 
     // start
     @Override
