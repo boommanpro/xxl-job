@@ -143,7 +143,7 @@ $(function() {
 					},
 	                { 
 	                	"data": 'handleTime',
-                        "width":'20%',
+                        "width":'15%',
 	                	"render": function ( data, type, row ) {
 	                		return data?moment(data).format("YYYY-MM-DD HH:mm:ss"):"";
 	                	}
@@ -170,6 +170,13 @@ $(function() {
                         "width":'10%',
 	                	"render": function ( data, type, row ) {
 	                		return data?'<a class="logTips" href="javascript:;" >'+ I18n.system_show +'<span style="display:none;">'+ data +'</span></a>':I18n.system_empty;
+	                	}
+	                },
+	                {
+	                	"data": 'handleView',
+                        "width":'5%',
+	                	"render": function ( data, type, row ) {
+	                		return '<div class="joblog_view_log" _id="'+ row.id +'"><a href="javascript:void(0);"><span class="ion-document-text"></span></a></div>';
 	                	}
 	                },
 	                {
@@ -257,9 +264,15 @@ $(function() {
 	// logDetail look
 	$('#joblog_list').on('click', '.logDetail', function(){
 		var _id = $(this).attr('_id');
-		
+		// TODO
 		window.open(base_url + '/joblog/logDetailPage?id=' + _id);
 		return;
+	});
+
+	$('#joblog_list').on('click', '.joblog_view_log', function(){
+		var _id = $(this).attr('_id');
+		$('body').append('<div class="joblog_view_win"><iframe height="100%" width="100%" src="' + base_url + '/joblog/logDetailPage1?id=' + _id + '"></iframe></div>');
+		$('.joblog_view_win').animate({ width:'1200px' },"slow");
 	});
 
 	/**

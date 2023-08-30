@@ -147,7 +147,8 @@ $(function() {
                                     '     </button>\n' +
                                     '     <ul class="dropdown-menu" role="menu" _id="'+ row.id +'" >\n' +
                                     '       <li><a href="javascript:void(0);" class="job_trigger" >'+ I18n.jobinfo_opt_run +'</a></li>\n' +
-                                    '       <li><a href="'+ logHref +'">'+ I18n.jobinfo_opt_log +'</a></li>\n' +
+                                    //'       <li><a href="'+ logHref +'">'+ I18n.jobinfo_opt_log +'</a></li>\n' +
+                                    '       <li><a href="javascript:void(0);" onclick="joblogLink(\''+ logHref + '\')">'+ I18n.jobinfo_opt_log +'</a></li>\n' +
                                     '       <li><a href="javascript:void(0);" class="job_registryinfo" >' + I18n.jobinfo_opt_registryinfo + '</a></li>\n' +
 									job_next_time_html +
                                     '       <li class="divider"></li>\n' +

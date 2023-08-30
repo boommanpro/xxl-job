@@ -37,11 +37,16 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String index(Model model) {
-
 		Map<String, Object> dashboardMap = xxlJobService.dashboardInfo();
 		model.addAllAttributes(dashboardMap);
-
 		return "index";
+	}
+
+	@RequestMapping("/home")
+	public String home(Model model) {
+		Map<String, Object> dashboardMap = xxlJobService.dashboardInfo();
+		model.addAllAttributes(dashboardMap);
+		return "home/index";
 	}
 
     @RequestMapping("/chartInfo")

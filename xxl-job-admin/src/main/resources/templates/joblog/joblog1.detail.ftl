@@ -11,7 +11,7 @@
 
     <header class="main-header">
         <nav class="navbar navbar-static-top">
-            <div class="container">
+            <div class="container"  style="width: 100%;">
                 <#-- icon -->
                 <div class="navbar-header">
                     <a class="navbar-brand"><b>${I18n.joblog_rolling_log}</b> Console</a>
@@ -36,6 +36,19 @@
                                 ${I18n.joblog_rolling_log_refresh}
                             </a>
                         </li>
+                        <li>
+                            <a href="javascript:void(0);" >
+                                <div class="flex" style="width: 45px;">
+                                    <div class="joblog_detail_bg joblog_detail_bg_white" id="detail_bg_white"></div>
+                                    <div class="joblog_detail_bg joblog_detail_bg_black" id="detail_bg_black"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" >
+                                <span class="ion-close-circled joblog_detail_close" ></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -45,15 +58,12 @@
 
     <div class="content-wrapper" >
         <section class="content">
-            <pre style="font-size:12px;position:relative;" >
+            <pre style="font-size:12px;position:relative;" class="detail_bg detail_bg_default">
                 <div id="logConsole"></div>
                 <li class="fa fa-refresh fa-spin" style="font-size: 20px;float: left;" id="logConsoleRunning" ></li>
             </pre>
         </section>
     </div>
-
-    <!-- footer -->
-    <@netCommon.commonFooter />
 
 </div>
 

@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/static/adminlte/bower_components/Ionicons/css/extend.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="${request.contextPath}/static/adminlte/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="${request.contextPath}/static/adminlte/dist/css/skins/_all-skins.min.css">
-      
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -60,6 +61,10 @@
     <script>
 		var base_url = '${request.contextPath}';
         var I18n = ${I18nUtil.getMultString()};
+        /*$("#custom").click(function () {
+			$(".tabs").append('<li class>${I18n.joblog_name}</li>');
+			$(".boxs").append('<div class="tabs-box"><iframe height="800px" width="100%" src="${request.contextPath}/joblog" style="border: 0"></iframe></div>');
+		})*/
 	</script>
 
 </#macro>
@@ -134,14 +139,14 @@
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu">
                 <li class="header">${I18n.system_nav}</li>
-                <li class="nav-click <#if pageName == "index">active</#if>" ><a href="${request.contextPath}/"><i class="fa fa-circle-o text-aqua"></i><span>${I18n.job_dashboard_name}</span></a></li>
-				<li class="nav-click <#if pageName == "jobinfo">active</#if>" ><a href="${request.contextPath}/jobinfo"><i class="fa fa-circle-o text-yellow"></i><span>${I18n.jobinfo_name}</span></a></li>
-				<li class="nav-click <#if pageName == "joblog">active</#if>" ><a href="${request.contextPath}/joblog"><i class="fa fa-circle-o text-green"></i><span>${I18n.joblog_name}</span></a></li>
+                <li class="nav-click <#if pageName == "index">active</#if>"><a href="javascript:void(0);" onclick="home()"><i class="fa fa-circle-o text-aqua"></i><span>${I18n.job_dashboard_name}</span></a></li>
+				<li class="nav-click <#if pageName == "jobinfo">active</#if>"><a href="javascript:void(0);" onclick="jobinfo('${request.contextPath}')"><i class="fa fa-circle-o text-yellow"></i><span>${I18n.jobinfo_name}</span></a></li>
+				<li class="nav-click <#if pageName == "joblog">active</#if>"><a href="javascript:void(0);" onclick="joblog('${request.contextPath}')"><i class="fa fa-circle-o text-green"></i><span>${I18n.joblog_name}</span></a></li>
 				<#if Request["XXL_JOB_LOGIN_IDENTITY"].role == 1>
-                    <li class="nav-click <#if pageName == "jobgroup">active</#if>" ><a href="${request.contextPath}/jobgroup"><i class="fa fa-circle-o text-red"></i><span>${I18n.jobgroup_name}</span></a></li>
-                    <li class="nav-click <#if pageName == "user">active</#if>" ><a href="${request.contextPath}/user"><i class="fa fa-circle-o text-purple"></i><span>${I18n.user_manage}</span></a></li>
+                    <li class="nav-click <#if pageName == "jobgroup">active</#if>"><a href="javascript:void(0);" onclick="jobgroup('${request.contextPath}')"><i class="fa fa-circle-o text-red"></i><span>${I18n.jobgroup_name}</span></a></li>
+                    <li class="nav-click <#if pageName == "user">active</#if>"><a href="javascript:void(0);" onclick="users('${request.contextPath}')"><i class="fa fa-circle-o text-purple"></i><span>${I18n.user_manage}</span></a></li>
 				</#if>
-				<li class="nav-click <#if pageName == "help">active</#if>" ><a href="${request.contextPath}/help"><i class="fa fa-circle-o text-gray"></i><span>${I18n.job_help}</span></a></li>
+				<li class="nav-click <#if pageName == "help">active</#if>"><a href="javascript:void(0);" onclick="help('${request.contextPath}')"><i class="fa fa-circle-o text-gray"></i><span>${I18n.job_help}</span></a></li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->

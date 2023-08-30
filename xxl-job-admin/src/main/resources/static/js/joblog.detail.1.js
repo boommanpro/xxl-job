@@ -1,5 +1,17 @@
 $(function() {
 
+    $('.joblog_detail_close').click(function () {
+        $(window.parent.document.getElementsByClassName('joblog_view_win')).remove();
+    });
+
+    $('.joblog_detail_bg').on('click', function () {
+        if($(this).attr('id') == 'detail_bg_white') {
+            $('.detail_bg').addClass('detail_bg_default').removeClass('detail_bg_white');
+        } else {
+            $('.detail_bg').addClass('detail_bg_white').removeClass('detail_bg_default');
+        }
+    });
+
     // trigger fail, end
     if ( !(triggerCode == 200 || handleCode != 0) ) {
         $('#logConsoleRunning').hide();
@@ -25,6 +37,8 @@ $(function() {
             async: false,   // sync, make log ordered
             url : base_url + '/joblog/logDetailCat',
             data : {
+                "executorAddress":executorAddress,
+                "triggerTime":triggerTime,
                 "logId":logId,
                 "fromLineNum":fromLineNum
             },
