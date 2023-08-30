@@ -13,13 +13,13 @@ front merge from https://github.com/Tison-wang/xxl-job-front
 
 &nbsp;
 
-![Image](https://raw.githubusercontent.com/BoomManPro/xxl-job/main/doc/image/2.jpg)
+![Image](https://raw.githubusercontent.com/BoomManPro/xxl-job/master/doc/image/2.jpg)
 
 &nbsp;
 
 ###### 支持日志背景色黑白切换
 
-![Image](https://raw.githubusercontent.com/Tison-wang/xxl-job-front/main/doc/image/3.jpg)
+![Image](https://raw.githubusercontent.com/Tison-wang/xxl-job-front/master/doc/image/3.jpg)
 
 ###### 部署方式与原项目 xxl-job-admin 无区别
 
