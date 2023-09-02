@@ -15,10 +15,10 @@ import java.util.List;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class XxlJobInfoDaoTest {
 	private static Logger logger = LoggerFactory.getLogger(XxlJobInfoDaoTest.class);
-	
+
 	@Resource
 	private XxlJobInfoDao xxlJobInfoDao;
-	
+
 	@Test
 	public void pageList(){
 		List<XxlJobInfo> list = xxlJobInfoDao.pageList(0, 20, 0, -1, null, null, null);
@@ -29,14 +29,14 @@ public class XxlJobInfoDaoTest {
 
 		List<XxlJobInfo> list2 = xxlJobInfoDao.getJobsByGroup(1);
 	}
-	
+
 	@Test
 	public void save_load(){
 		XxlJobInfo info = new XxlJobInfo();
 		info.setJobGroup(1);
 		info.setJobDesc("desc");
 		info.setAuthor("setAuthor");
-		info.setAlarmEmail("setAlarmEmail");
+		info.setAlarmConfig("setAlarmEmail");
 		info.setScheduleType(ScheduleTypeEnum.FIX_RATE.name());
 		info.setScheduleConf(String.valueOf(33));
 		info.setMisfireStrategy(MisfireStrategyEnum.DO_NOTHING.name());
@@ -61,7 +61,7 @@ public class XxlJobInfoDaoTest {
 		info.setMisfireStrategy(MisfireStrategyEnum.FIRE_ONCE_NOW.name());
 		info2.setJobDesc("desc2");
 		info2.setAuthor("setAuthor2");
-		info2.setAlarmEmail("setAlarmEmail2");
+		info2.setAlarmConfig("setAlarmEmail2");
 		info2.setExecutorRouteStrategy("setExecutorRouteStrategy2");
 		info2.setExecutorHandler("setExecutorHandler2");
 		info2.setExecutorParam("setExecutorParam2");

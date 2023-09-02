@@ -5,6 +5,7 @@ import com.xxl.job.admin.core.conf.XxlJobAdminConfig;
 import com.xxl.job.admin.core.model.XxlJobGroup;
 import com.xxl.job.admin.core.model.XxlJobInfo;
 import com.xxl.job.admin.core.model.XxlJobLog;
+import com.xxl.job.admin.core.alarm.type.AlarmTypeEnum;
 import com.xxl.job.admin.core.util.I18nUtil;
 import com.xxl.job.core.biz.model.ReturnT;
 import org.slf4j.Logger;
@@ -37,7 +38,7 @@ public class EmailJobAlarm implements JobAlarm {
         boolean alarmResult = true;
 
         // send monitor email
-        if (info!=null && info.getAlarmEmail()!=null && info.getAlarmEmail().trim().length()>0) {
+        if (info!=null && AlarmTypeEnum.EMAIL == info.getAlarmType() && info.getAlarmConfig().trim().length()>0) {
 
             // alarmContent
             String alarmContent = "Alarm Job LogId=" + jobLog.getId();
@@ -58,7 +59,7 @@ public class EmailJobAlarm implements JobAlarm {
                     info.getJobDesc(),
                     alarmContent);
 
-            Set<String> emailSet = new HashSet<String>(Arrays.asList(info.getAlarmEmail().split(",")));
+            Set<String> emailSet = new HashSet<String>(Arrays.asList(info.getAlarmConfig().split(",")));
             for (String email: emailSet) {
 
                 // make mail
