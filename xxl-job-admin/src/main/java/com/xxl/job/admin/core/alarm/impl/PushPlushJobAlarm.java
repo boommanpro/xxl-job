@@ -10,7 +10,7 @@ import com.xxl.job.admin.core.conf.XxlJobAdminConfig;
 import com.xxl.job.admin.core.model.XxlJobGroup;
 import com.xxl.job.admin.core.model.XxlJobInfo;
 import com.xxl.job.admin.core.model.XxlJobLog;
-import com.xxl.job.admin.core.alarm.type.AlarmTypeEnum;
+import com.xxl.job.admin.core.type.AlarmType;
 import com.xxl.job.admin.core.util.I18nUtil;
 import com.xxl.job.core.biz.model.ReturnT;
 import io.netty.util.internal.StringUtil;
@@ -43,7 +43,7 @@ public class PushPlushJobAlarm implements JobAlarm {
     public boolean doAlarm(XxlJobInfo info, XxlJobLog jobLog) {
         boolean alarmResult = true;
 
-        if (info != null && AlarmTypeEnum.PUSH_PLUSH == info.getAlarmType() && !StringUtil.isNullOrEmpty(info.getAlarmConfig())) {
+        if (info != null && AlarmType.PUSH_PLUSH == info.getAlarmType() && !StringUtil.isNullOrEmpty(info.getAlarmConfig())) {
 
             // alarmContent
             String alarmContent = "Alarm Job LogId=" + jobLog.getId();

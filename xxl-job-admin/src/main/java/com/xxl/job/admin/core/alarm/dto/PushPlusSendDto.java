@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class PushPlusSendDto {
-
     private String token;
 
     private String title;
