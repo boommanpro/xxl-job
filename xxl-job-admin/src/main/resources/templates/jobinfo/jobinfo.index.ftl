@@ -132,7 +132,7 @@
                             </select>
                         </div>
                         <label for="lastname" class="col-sm-2 control-label">${I18n.alarm_config}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="alarmConfig" placeholder="${I18n.alarm_config}" maxlength="100" ></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="alarmConfig" placeholder="${I18n.alarm_config}" maxlength="1000" ></div>
                     </div>
 
                     <br>
@@ -389,7 +389,7 @@ exit 0
                             </select>
                         </div>
                         <label for="lastname" class="col-sm-2 control-label">${I18n.alarm_config}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="alarmConfig" placeholder="${I18n.alarm_config}" maxlength="100" ></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="alarmConfig" placeholder="${I18n.alarm_config}" maxlength="1000" ></div>
                     </div>
 
                     <br>
