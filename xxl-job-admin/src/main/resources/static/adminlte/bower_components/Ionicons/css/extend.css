@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.tabs {
+    display: flex;
+}
+.tabs li {
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    text-decoration: none;
+    list-style-type: none;
+    border: 1px solid #ccc;
+    border-bottom: 0px;
+    text-align: center;
+    font-size: 16px;
+}
+.tabs li:hover {
+    cursor: pointer;
+}
+.boxs {
+    height: 100%;
+    border: 1px solid #ccc;
+    border-bottom: 0px;
+}
+.tabs-box {
+    width: 100%;
+    height: 100%;
+    display: none
+}
+.active {
+    background-color: steelblue;
+    color: #fff;
+}
+.boxOne {
+    display: block;
+}
+ul {
+    list-style: none;
+    margin-bottom: 0px;
+}
+.tab-close {
+    font-size: 14px;
+    padding-left: 16px;
+    cursor: pointer;
+}
+.tab-close:hover, .joblog_detail_close:hover {
+    color: red;
+}
+.joblog_view_win {
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    z-index: 3;
+    position: absolute;
+}
+.joblog_detail_bg {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+.joblog_detail_bg_white {
+    background: white;
+}
+.joblog_detail_bg_black {
+    background: black;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+.detail_bg_default {
+    color: #333;
+    background: #f5f5f5;
+}
+.detail_bg_white {
+    color: white;
+    background: black;
+}
+.joblog_view_log {
+    font-size: 20px;
+    text-align: center;
+}
