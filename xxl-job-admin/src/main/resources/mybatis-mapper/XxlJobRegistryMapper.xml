@@ -37,10 +37,19 @@
 		</foreach>
 	</delete>
 
+
+
 	<select id="findAll" parameterType="java.util.HashMap" resultMap="XxlJobRegistry">
 		SELECT <include refid="Base_Column_List" />
 		FROM xxl_job_registry AS t
 		WHERE t.update_time <![CDATA[ > ]]> DATE_ADD(#{nowTime},INTERVAL -#{timeout} SECOND)
+	</select>
+
+	<select id="findAll" parameterType="java.util.HashMap" resultMap="XxlJobRegistry" databaseId="sqlite">
+		SELECT <include refid="Base_Column_List" />
+		FROM xxl_job_registry AS t
+		WHERE t.update_time <![CDATA[ > ]]> #{beatDate}
+
 	</select>
 
     <update id="registryUpdate" >

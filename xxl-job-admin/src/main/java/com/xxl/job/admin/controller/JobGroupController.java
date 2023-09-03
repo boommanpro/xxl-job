@@ -3,6 +3,7 @@ package com.xxl.job.admin.controller;
 import com.xxl.job.admin.core.model.XxlJobGroup;
 import com.xxl.job.admin.core.model.XxlJobRegistry;
 import com.xxl.job.admin.core.util.I18nUtil;
+import com.xxl.job.admin.core.util.LocalDateTimeUtils;
 import com.xxl.job.admin.dao.XxlJobGroupDao;
 import com.xxl.job.admin.dao.XxlJobInfoDao;
 import com.xxl.job.admin.dao.XxlJobRegistryDao;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -148,7 +150,8 @@ public class JobGroupController {
 
 	private List<String> findRegistryByAppName(String appnameParam){
 		HashMap<String, List<String>> appAddressMap = new HashMap<String, List<String>>();
-		List<XxlJobRegistry> list = xxlJobRegistryDao.findAll(RegistryConfig.DEAD_TIMEOUT, new Date());
+		Date beatDate = LocalDateTimeUtils.toDate(LocalDateTime.now().minusSeconds(RegistryConfig.DEAD_TIMEOUT));
+		List<XxlJobRegistry> list = xxlJobRegistryDao.findAll(RegistryConfig.DEAD_TIMEOUT, new Date(), beatDate);
 		if (list != null) {
 			for (XxlJobRegistry item: list) {
 				if (RegistryConfig.RegistType.EXECUTOR.name().equals(item.getRegistryGroup())) {
