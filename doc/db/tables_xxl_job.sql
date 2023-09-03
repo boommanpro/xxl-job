@@ -14,7 +14,7 @@ CREATE TABLE `xxl_job_info` (
   `add_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `author` varchar(64) DEFAULT NULL COMMENT '作者',
-  `alarm_type` varchar(64) DEFAULT NULL COMMENT '报警类型',
+  `alarm_type` varchar(64) DEFAULT 'EMAIL' COMMENT '报警类型',
   `alarm_config` text  COMMENT '报警配置',
   `schedule_type` varchar(50) NOT NULL DEFAULT 'NONE' COMMENT '调度类型',
   `schedule_conf` varchar(128) DEFAULT NULL COMMENT '调度配置，值含义取决于调度类型',
