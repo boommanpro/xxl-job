@@ -1,43 +1,32 @@
 package com.xxl.job.admin;
 
-import com.zaxxer.hikari.HikariDataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.util.StringUtils;
-import org.sqlite.SQLiteConfig;
-
-import javax.sql.DataSource;
-import java.util.Properties;
+import org.springframework.boot.web.context.WebServerApplicationContext;
+import org.springframework.boot.web.context.WebServerInitializedEvent;
+import org.springframework.boot.web.server.WebServer;
+import org.springframework.context.ApplicationListener;
 
 /**
  * @author xuxueli 2018-10-28 00:38:13
  */
+@Slf4j
 @SpringBootApplication
-public class XxlJobAdminApplication {
+public class XxlJobAdminApplication implements ApplicationListener<WebServerInitializedEvent> {
 
-	public static void main(String[] args) {
-		SpringApplication.run(XxlJobAdminApplication.class, args);
-	}
 
-	@Bean
-	@ConfigurationProperties(prefix = "spring.datasource.hikari")
-	HikariDataSource dataSource(DataSourceProperties properties) {
+    public static void main(String[] args) {
+        SpringApplication.run(XxlJobAdminApplication.class, args);
+    }
 
-		HikariDataSource dataSource = createDataSource(properties, HikariDataSource.class);
-		if (StringUtils.hasText(properties.getName())) {
-			dataSource.setPoolName(properties.getName());
-		}
-		Properties dataSourceProperties = new SQLiteConfig().toProperties();
-		dataSourceProperties.setProperty(SQLiteConfig.Pragma.DATE_STRING_FORMAT.pragmaName, "yyyy-MM-dd HH:mm:ss");
-		dataSource.setDataSourceProperties(dataSourceProperties);
-		return dataSource;
-	}
 
-	protected static <T> T createDataSource(DataSourceProperties properties, Class<? extends DataSource> type) {
-		return (T) properties.initializeDataSourceBuilder().type(type).build();
-	}
+    @Override
+    public void onApplicationEvent(WebServerInitializedEvent event) {
+        WebServer webServer = event.getWebServer();
+        WebServerApplicationContext applicationContext = event.getApplicationContext();
+        String contextPath = applicationContext.getEnvironment().getProperty("server.servlet.context-path");
+        log.info("xxl-job admin start success, server is http://127.0.0.1:{}{}", webServer.getPort(), contextPath);
+    }
 
 }
