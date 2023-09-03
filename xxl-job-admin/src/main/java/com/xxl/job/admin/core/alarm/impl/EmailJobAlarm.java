@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.mail.internet.MimeMessage;
 import java.text.MessageFormat;
@@ -38,7 +39,7 @@ public class EmailJobAlarm implements JobAlarm {
         boolean alarmResult = true;
 
         // send monitor email
-        if (info!=null && AlarmType.EMAIL == info.getAlarmType() && info.getAlarmConfig().trim().length()>0) {
+        if (info!=null && AlarmType.EMAIL == info.getAlarmType() && StringUtils.hasText(info.getAlarmConfig())) {
 
             // alarmContent
             String alarmContent = "Alarm Job LogId=" + jobLog.getId();
