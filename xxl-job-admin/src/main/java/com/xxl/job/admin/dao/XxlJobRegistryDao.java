@@ -14,7 +14,7 @@ import java.util.List;
 public interface XxlJobRegistryDao {
 
     public List<Integer> findDead(@Param("timeout") int timeout,
-                                  @Param("nowTime") Date nowTime);
+                                  @Param("nowTime") Date nowTime, @Param("deadDate") Date deadDate);
 
     public int removeDead(@Param("ids") List<Integer> ids);
 
