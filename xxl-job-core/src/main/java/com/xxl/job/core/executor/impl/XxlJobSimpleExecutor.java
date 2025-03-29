@@ -1,5 +1,6 @@
 package com.xxl.job.core.executor.impl;
 
+import com.xxl.job.core.config.XxlJobExecutorConfig;
 import com.xxl.job.core.executor.XxlJobExecutor;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import com.xxl.job.core.handler.impl.MethodJobHandler;
@@ -22,6 +23,22 @@ public class XxlJobSimpleExecutor extends XxlJobExecutor {
 
 
     private List<Object> xxlJobBeanList = new ArrayList<>();
+
+    public XxlJobSimpleExecutor() {
+    }
+
+    public XxlJobSimpleExecutor(XxlJobExecutorConfig xxlJobExecutorConfig) {
+        this.setAdminAddresses(xxlJobExecutorConfig.getAdminAddresses());
+        this.setAccessToken(xxlJobExecutorConfig.getAccessToken());
+        XxlJobExecutorConfig.ExecutorConfig executor = xxlJobExecutorConfig.getExecutor();
+        this.setAppname(executor.getAppName());
+        this.setAddress(executor.getAddress());
+        this.setIp(executor.getIp());
+        this.setPort(executor.getPort());
+        this.setLogPath(executor.getLogPath());
+        this.setLogRetentionDays(executor.getLogRetentionDays());
+    }
+
     public List<Object> getXxlJobBeanList() {
         return xxlJobBeanList;
     }
